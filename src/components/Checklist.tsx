@@ -17,6 +17,7 @@ import { IdRegistryABI } from "@/abi/IdRegistryABI";
 import { Toaster } from "sonner";
 import axios from "axios";
 import { Hex } from "viem";
+import { Connectors } from "./Connectors";
 
 export default function Checklist() {
   const { address, isConnected } = useAccount();
@@ -138,8 +139,11 @@ export default function Checklist() {
         <h1 className="text-2xl font-semibold text-gray-900 dark:text-white">
           Sign up for Farcaster
         </h1>
+        <Connectors />
+        {/* <MpcCoreKitLogin /> */}
         <ConnectKitButton />
       </div>
+      { isConnected && <h3>Connected! { address } </h3>}
       <div className="divide-y divide-gray-200">
         <div className="relative flex items-start pb-4 pt-3.5">
           <div className="min-w-0 flex-1 text-sm leading-6">
@@ -183,7 +187,7 @@ export default function Checklist() {
               onChange={(e) => setRecoveryAddress(e.target.value)}
               className="mt-2 block w-64 rounded-md border-0 py-1.5 text-gray-900 ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:ring-2 focus:ring-inset focus:ring-purple-600 sm:text-sm sm:leading-6 dark:bg-gray-700 dark:text-white dark:placeholder:text-gray-300 disabled:bg-gray-100 disabled:text-gray-500 disabled:dark:bg-gray-800 disabled:dark:text-gray-400 disabled:dark:ring-gray-700 duration-100"
               placeholder="Recovery address"
-              disabled={!isConnected || disableRecoveryAddress}
+              // disabled={!isConnected || disableRecoveryAddress}
               data-1p-ignore
             />
           </div>
