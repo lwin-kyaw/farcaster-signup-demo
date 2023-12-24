@@ -26,9 +26,10 @@ export default function RegisterFIDButton({
     address: "0x00000000Fc25870C6eD6b6c7E41Fb078b7656f69",
     abi: IdGatewayABI,
     functionName: "price",
-    chainId: 10,
+    chainId: 10, // mainnet
+    // chainId: 420, // testnet
   });
-
+  console.log("price", price);
   const { config, isError, error } = usePrepareContractWrite({
     address: "0x00000000Fc25870C6eD6b6c7E41Fb078b7656f69",
     abi: IdGatewayABI,
@@ -75,8 +76,8 @@ export default function RegisterFIDButton({
         !isConnected ||
         address === undefined ||
         fid !== 0 ||
-        !/^(0x)?[0-9a-fA-F]{40}$/i.test(recoveryAddress) ||
-        recoveryAddress.toLowerCase() === address.toLowerCase()
+        !/^(0x)?[0-9a-fA-F]{40}$/i.test(recoveryAddress)
+        // recoveryAddress.toLowerCase() === address.toLowerCase()
       }
       onClick={() => registerFid()}
       type="button"
